@@ -77,41 +77,42 @@ public class FieldHandler {
         char direction = directions[rand.nextInt(4)];
         room_matrix[adventurer.getXposition()][adventurer.getYposition()].setHas_player(false);
         String event = "You head";
+        String thrownbackwards=" and hit your forehead against a wall.\nThe force sends you flying backwards!";
         switch (direction) {
-            case 'n':
-                event+=" north";
-                if (adventurer.getYposition() == dimensions - 1) {
-                    adventurer.setYposition(adventurer.getYposition() - 1);
-                } else {
-                    adventurer.setYposition(adventurer.getYposition() + 1);
-                    event+=" and hit your forehead against a wall.\nThe force sends you flying backwards!";
-                }
-                break;
             case 's':
                 event+=" south";
-                if (adventurer.getYposition() == 0) {
-                    adventurer.setYposition(adventurer.getYposition() + 1);
-                } else {
+                if (adventurer.getYposition() == dimensions - 1) {
                     adventurer.setYposition(adventurer.getYposition() - 1);
-                    event+=" and hit your forehead against a wall.\nThe force sends you flying backwards!";
+                    event+=thrownbackwards;
+                } else {
+                    adventurer.setYposition(adventurer.getYposition() + 1);
                 }
                 break;
-            case 'w':
-                event+=" west";
-                if (adventurer.getXposition() == dimensions - 1) {
-                    adventurer.setXposition(adventurer.getXposition() - 1);
+            case 'n':
+                event+=" north";
+                if (adventurer.getYposition() == 0) {
+                    adventurer.setYposition(adventurer.getYposition() + 1);
+                    event+=thrownbackwards;
                 } else {
-                    adventurer.setXposition(adventurer.getXposition() + 1);
-                    event+=" and hit your forehead against a wall.\nThe force sends you flying backwards!";
+                    adventurer.setYposition(adventurer.getYposition() - 1);
                 }
                 break;
             case 'e':
                 event+=" east";
+                if (adventurer.getXposition() == dimensions - 1) {
+                    adventurer.setXposition(adventurer.getXposition() - 1);
+                    event+=thrownbackwards;
+                } else {
+                    adventurer.setXposition(adventurer.getXposition() + 1);
+                }
+                break;
+            case 'w':
+                event+=" west";
                 if (adventurer.getXposition() == 0) {
                     adventurer.setXposition(adventurer.getXposition() + 1);
+                    event+=thrownbackwards;
                 } else {
                     adventurer.setXposition(adventurer.getXposition() - 1);
-                    event+=" and hit your forehead against a wall.\nThe force sends you flying backwards!";
                 }
                 break;
         }

@@ -7,7 +7,7 @@ public class Game {
         int stamina = 5;
         FieldHandler treasure_seeker = new FieldHandler(3);
         treasure_seeker.init();
-        System.out.println("You find yourself a dungeon!");
+        System.out.println("You find yourself in dark a dungeon!");
         treasure_seeker.draw_field();
         while ((!treasure_seeker.treasure_found()) && (stamina > 0)) {
             try {
@@ -15,8 +15,8 @@ public class Game {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
-            System.out.println(treasure_seeker.move_adventurer());
+            String event=treasure_seeker.move_adventurer();
+            System.out.println(event);
             treasure_seeker.draw_field();
 
             stamina--;
