@@ -27,8 +27,6 @@ public class Goal {
     }
 
 
-    public boolean goal_found(int x, int y) {
-        return (x == getXposition()) && (y == getYposition());
-    }
+
 
 }
